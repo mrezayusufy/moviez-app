@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { styles } from '@/constants';
-import { Iconly } from '@/utils';
-import { LinearGradient  } from 'expo-linear-gradient';
+import { Iconly, IconlyName } from '@/utils';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 type TabItem = {
   name: string;
-  icon: string;
+  icon: IconlyName;
   label: string;
 };
 
@@ -18,7 +18,7 @@ type TabBarProps = {
 function TabButton({ isFocused, onPress, iconName, label }: {
   isFocused: boolean;
   onPress: () => void;
-  iconName: string;
+  iconName: IconlyName;
   label: string;
 }) {
   return (
@@ -35,14 +35,14 @@ function TabButton({ isFocused, onPress, iconName, label }: {
           style={styles.activeBackground}
         />
       )}
-      <View 
+      <View
         style={[
           styles.tabButton,
           isFocused && styles.activeTabButton
         ]}
       >
         <Iconly
-          name={isFocused ? iconName : `${iconName}-f`}
+          name={isFocused ? `${iconName}-f` as IconlyName : iconName}
           size={24}
           color={isFocused ? '#FFFFFF' : '#9CA3AF'}
         />
@@ -59,9 +59,7 @@ export const PillTabBar = ({ state, descriptors, navigation, tabs }: TabBarProps
         return (
           <View style={styles.container}>
             <View style={styles.tabBarContainer}>
-              {state.routes.map((route, index) => {
-                const { options } = descriptors[route.key];
-                const label = options.tabBarLabel ?? options.title ?? route.name;
+              {state.routes.map((route: {key: number, name: string}, index: number) => {
                 const isFocused = state.index === index;
                 const tabConfig = tabs[index];
                 const onPress = () => {

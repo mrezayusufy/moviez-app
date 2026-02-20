@@ -1,9 +1,6 @@
-import React from 'react'
+import { Text } from "react-native"
 
-function Details() {
-  return (
-    <div>Movie Details</div>
-  )
+const MovideDetails = () => {
+  return <Text>movie details</Text>
 }
-
-export default Details
+export default MovideDetails

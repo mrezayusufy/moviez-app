@@ -1,17 +1,16 @@
-import { Tabs } from 'expo-router'
+import { PillTabBar } from '@/components';
 import { useTabs } from '@/hooks';
-import { PillTabBar } from '@/components'
+import { Tabs } from 'expo-router';
  
 const _Layout = () => {
-  const tabs = useTabs();
+  const tabs = useTabs() as any;
   return (
-    <Tabs
-    style={{position: 'relative'}}
+    <Tabs 
     tabBar={(props) => <PillTabBar {...props} tabs={tabs}/>}
       screenOptions={{
         headerShown: false
       }}>
-      {tabs.map((tab) => (
+      {tabs.map((tab: {name: string}) => (
         <Tabs.Screen key={tab.name} name={tab.name} />
       ))}
     </Tabs>

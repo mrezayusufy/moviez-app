@@ -1,2 +1,2 @@
-import Iconly from "./iconly"
-export { Iconly };
+import Iconly, { IconlyName } from "./iconly";
+export { Iconly, IconlyName };

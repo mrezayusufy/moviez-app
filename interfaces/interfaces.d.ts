@@ -1,5 +1,5 @@
 interface Movie {
-  id: number;
+  id: string;
   title: string;
   adult: boolean;
   backdrop_path: string;
