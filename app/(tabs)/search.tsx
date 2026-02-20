@@ -1,10 +1,11 @@
 import React from 'react';
-import { MovieCard } from "@/components";
+import { MovieCard, NetworkError } from "@/components";
 import SearchBar from "@/components/SearchBar";
 import { images, styles } from "@/constants";
 import { getMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
 import { ActivityIndicator, FlatList, Image, ScrollView, Text, View } from "react-native";
+import Iconly from '@/utils/iconly';
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -18,8 +19,8 @@ const Search = () => {
       }}>
         
         {mLoading ?
-          (<ActivityIndicator size="large" color="#0000ff" className="mt-10 self-center" />)
-          : mError ? (<Text className="text-white text-lg font-bold text-center">Error: {mError?.message} ⚠</Text>)
+          (<ActivityIndicator size="large" color="#0000ff" className="mt-10 self-center flex-1" />)
+          : mError ? (<NetworkError error={mError}/>)
             : (
               <View className="flex-1 mt-5">
                 <> 
