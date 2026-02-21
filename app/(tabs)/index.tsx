@@ -43,8 +43,8 @@ export default function Index() {
               className="rounded-full px-8 py-4 mt-8 flex-row bg-white mx-auto"
               disabled={refreshing}
             >
-              <Iconly name="refresh" size={18} color="#fff" />
-              <Text style={{ color: "#000", fontWeight: "bold" }}>
+              <Iconly name="refresh" size={24} color="#D6C6FF" />
+              <Text className="text-xl ml-2 text-dark">
                 {refreshing ? "Refreshing..." : "Refresh"}
               </Text>
             </TouchableOpacity>
